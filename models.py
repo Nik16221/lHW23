@@ -1,11 +1,14 @@
+from typing import Iterable, Dict, Any
+
 from marshmallow import Schema, fields, validates_schema, ValidationError
 
-VALID_CMD_PARAMS = (
+VALID_CMD_PARAMS: Iterable[str] = (
     "filter",
     "map",
     "unique",
     "sort",
-    "limit"
+    "limit",
+    "regex"
 )
 
 
@@ -14,7 +17,7 @@ class RequestParams(Schema):
     value = fields.Str(required=True)
 
     @validates_schema
-    def validate_params(self, values, *args, **kwargs):
+    def validate_params(self, values: Dict[str, str], *args: Any, **kwargs: Any) -> Dict[str, str]:
         if values["cmd"] not in VALID_CMD_PARAMS:
             raise ValidationError("неверно указано значение cmd")
         return values
