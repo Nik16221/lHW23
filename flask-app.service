@@ -3,8 +3,8 @@ Description=Flask app service
 After=network.target
 
 [Service]
-WorkingDirectory=/home/basovnikita/app
-ExecStart=/home/basovnikita/app/venv/bin/pithon run.py
+WorkingDirectory=/home/cloud-ba5ov-nikita/app
+ExecStart=/home/cloud-ba5ov-nikita/app/venv/bin/pithon run.py
 
 [Install]
 WantedBy=multi-user.target
